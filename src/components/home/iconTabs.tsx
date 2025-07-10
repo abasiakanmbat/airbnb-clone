@@ -4,7 +4,7 @@ import { CarouselIcons } from '../common/carouselSlide'
 export default function IconTabs() {
   return (
     <div>
-      <div className='container relative items-center w-fit mx-auto bg-white border '>
+      <div className='container  items-center  mx-auto bg-white  '>
      
           <CarouselIcons />
       

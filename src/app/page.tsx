@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <IconTabs/>
       <CardsSection/>
-      hello world
+   
     </div>
   );
 }

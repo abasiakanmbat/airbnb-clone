@@ -1,3 +1,4 @@
+'use client'
 import * as React from "react"
 
 import {
@@ -8,89 +9,75 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Card, CardContent } from "../ui/card"
-import { House,AlarmSmoke,SwatchBook,HandPlatter,TentTree,Umbrella,Coffee,Snowflake,TreePalm,Tent,WavesLadder,Building2, SlidersHorizontal,} from "lucide-react"
+import { SlidersHorizontal,} from "lucide-react"
 import { Button } from "../ui/button"
+import clsx from "clsx"
+import { arrIcons } from "../data/filterIcons"
 
 
-const arrIcons = [
-  {
-  title: "shared Home",
-  icon: House,
-},
-  {
-  title: "OMG!",
-  icon: AlarmSmoke ,
-},
-  {
-  title: "Design",
-  icon: SwatchBook,
-},
-  {
-  title: "Luxe",
-  icon: HandPlatter,
-},
-{
-  title: "Countryside",
-  icon: TentTree,
-},
-{
-  title: "Beach",
-  icon: Umbrella,
-},
-{
-  title: "Bed & Breakfast",
-  icon: Coffee,
-},
-{
-  title: "Arctic",
-  icon: Snowflake,
-},
-{
-  title: "Islands",
-  icon: Tent,
-},
-{
-  title: "Amazing pools",
-  icon: WavesLadder,
-},
-{
-  title: "Iconic Cities",
-  icon: Building2,
-},
-{
-  title: "Tropical",
-  icon: TreePalm,
-},
-
-]
 export function CarouselIcons() {
+    const [selected, setSelected] = React.useState<string | null>(null)
+
+  const handleClick = (title: string) => {
+    setSelected(title)
+  }
   return (
-    <Carousel className="w-full  max-w-[100vw] ">
-      <CarouselContent className="-ml-1   border-none shadow-none">
+    <Carousel className="w-full max-w-[100vw]">
+      <CarouselContent className="-ml-1 border mr-10 border-none shadow-none">
         {arrIcons.map((item, index) => {
-          const IconComponent = item.icon;
+          const IconComponent = item.icon
+          const isActive = selected === item.title
+
           return (
-            <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/7 border-none shadow-none">
+            <CarouselItem
+              key={index}
+              className="pl-1 md:basis-1/2 lg:basis-1/7 border-none shadow-none"
+            >
               <div className="p-1">
-                <Card className=" border-none shadow-none">
-                  <CardContent className="flex flex-col  items-center justify-center p-6 border-none shadow-none">
-                    <div >
-                      <IconComponent />
+                <Card
+                  className={clsx(
+                    "border-none shadow-none cursor-pointer transition-all duration-200",
+                    isActive && "opacity-100"
+                  )}
+                  onClick={() => handleClick(item.title)}
+                >
+                  <CardContent
+                    className={clsx(
+                      "flex flex-col items-center justify-center p-6 border-none shadow-none",
+                      isActive ? "opacity-100" : "opacity-60"
+                    )}
+                  >
+                    <div className="mb-1">
+                      <IconComponent className={clsx(isActive ? "text-black" : "text-gray-500")} />
                     </div>
-                    <div className="text-xs font-semibold ">{item.title}</div>
+                    <div
+                      className={clsx(
+                        "text-xs font-semibold transition-all duration-200",
+                        isActive
+                          ? "underline underline-offset-4 text-black"
+                          : "text-gray-500"
+                      )}
+                    >
+                      {item.title}
+                    </div>
                   </CardContent>
                 </Card>
               </div>
             </CarouselItem>
-          );
+          )
         })}
       </CarouselContent>
+
       <CarouselPrevious />
-      <CarouselNext className="right-28"/>
-       <Button variant='outline' className='absolute right-1 top-1/2 -translate-y-1/2 z-50 border'>
-                <SlidersHorizontal className='mr-2' size={10} />
-                Filter
-              </Button>
+      <CarouselNext className="right-28" />
+
+      <Button
+        variant="outline"
+        className="absolute right-1 top-1/2 -translate-y-1/2 z-50 border"
+      >
+        <SlidersHorizontal size={10} />
+        Filter
+      </Button>
     </Carousel>
   )
 }
