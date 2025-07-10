@@ -1,5 +1,5 @@
 
-import { House,AlarmSmoke,SwatchBook,HandPlatter,TentTree,Umbrella,Coffee,Snowflake,TreePalm,Tent,WavesLadder,Building2, } from "lucide-react"
+import { House,AlarmSmoke,SwatchBook,HandPlatter,TentTree,Umbrella,Coffee,Snowflake,TreePalm,WavesLadder,Building2, } from "lucide-react"
 
 export const arrIcons = [
   {

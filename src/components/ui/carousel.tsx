@@ -58,8 +58,8 @@ function Carousel({
     },
     plugins
   )
-    const { selectedIndex, scrollSnaps, onDotButtonClick } =
-    useDotButton(api)
+    // const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    // useDotButton(api)
 
   const [canScrollPrev, setCanScrollPrev] = React.useState(false)
   const [canScrollNext, setCanScrollNext] = React.useState(false)

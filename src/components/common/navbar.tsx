@@ -1,4 +1,4 @@
-import { CircleUser, Globe, Hamburger, HamburgerIcon, Menu, Search } from 'lucide-react'
+import { CircleUser, Globe, Menu, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -12,6 +12,7 @@ export default function Navbar() {
         alt="Airbnb"
         width={108}
         height={99}
+        className=' w-[108px] object-contain'
       />
       </Link>
       <section className='hidden  md:flex shadow inset-shadow-2xs bg-white rounded-full px-4 py-2 gap-2 items-center w-fit'>
