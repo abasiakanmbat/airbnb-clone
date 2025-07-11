@@ -6,6 +6,7 @@ import { useRoomStore } from '@/store/roomstore';
 import Image from 'next/image';
 import Link from 'next/link';
 
+
 export default function CardsSection() {
   const { rooms, toggleLike, setInitialRooms } = useRoomStore()
 
@@ -33,6 +34,7 @@ export default function CardsSection() {
         className="group-hover:scale-115 transition-transform duration-300"
       />
     </Link>
+  
       <div className=' w-fit max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto my-10'>
 
      {rooms.map((room) => (

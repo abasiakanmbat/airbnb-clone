@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/carousel'
 import { Star } from 'lucide-react'
 import Image from 'next/image'
+import { toast } from 'sonner'
 
 interface RoomCardProps {
   id: number
@@ -35,11 +36,22 @@ export default function RoomCard({
   liked,
   toggleLike,
 }: RoomCardProps) {
+
+  const handleClick = () => {
+    toggleLike(id);
+    toast(`${title}`, {
+      description: `has been ${!liked?'added':'Removed'} to Wishlist`,
+      action: {
+        label: "close",
+        onClick: () => {},
+      },
+    })
+  }
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: id * 0.05 }}  
+      transition={{ duration: 0.4, delay: id * 0.05 }}
     >
       <Card className="w-full max-w-[260px] pt-0 border-none shadow-none transition-transform duration-600 hover:scale-[1.03]">
         <Carousel className="w-full max-w-[260px] border-none">
@@ -49,11 +61,11 @@ export default function RoomCard({
                 <div className="p-1">
                   <Card
                     style={{ backgroundImage: `url(${img})` }}
-                    onClick={() => toggleLike(id)}
+                    // onClick={handleClick}
                     className="relative bg-cover aspect-square flex items-center justify-center"
                   >
                     <motion.div
-                      onClick={() => toggleLike(id)}
+                      onClick={handleClick}
                       initial={false}
                       animate={{ scale: liked ? 1.3 : 1 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
